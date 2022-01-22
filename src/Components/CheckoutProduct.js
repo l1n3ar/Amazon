@@ -5,8 +5,6 @@ import "./CheckoutProduct.css";
 function CheckoutProduct({ id, image, title, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
 
-  console.log(basket);
-
   function truncate(str) {
     return str.length > 80 ? str.substring(0, 70) + "..." : str;
   }

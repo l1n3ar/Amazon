@@ -22,10 +22,12 @@ function Nav() {
         <SearchIcon className="search-icon" />
       </div>
       <div className="navbar-items">
-        <div className="navbar-item">
-          <span className="upper-line">Hello Guest</span>
-          <span className="lower-line">Sign in</span>
-        </div>
+        <Link to="/login">
+          <div className="navbar-item">
+            <span className="upper-line">Hello Guest</span>
+            <span className="lower-line">Sign in</span>
+          </div>
+        </Link>
         <div className="navbar-item">
           <span className="upper-line">Returns</span>
           <span className="lower-line">& Orders</span>
