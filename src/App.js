@@ -41,6 +41,10 @@ function App() {
             <Nav />
             <Checkout />
           </Route>
+          <Route exact path="/payment">
+            <Nav />
+            <h1>I am payment</h1>
+          </Route>
           <Route exact path="/">
             <Nav />
             <Home />

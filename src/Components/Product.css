@@ -10,6 +10,8 @@
   max-height: 400px;
   min-width: 100px;
   margin: 10px;
+  border-radius: 10px;
+  border: 0.2px solid #f0c14b;
 }
 
 .product-info {
