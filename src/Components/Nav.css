@@ -51,11 +51,13 @@
 
 .upper-line {
   font-size: 10px;
+  text-decoration: none;
 }
 
 .lower-line {
   font-size: 13px;
   font-weight: 800;
+  text-decoration: none;
 }
 
 .cart {

@@ -1,5 +1,6 @@
 export const initialState = {
   basket: [],
+  user: null,
 };
 
 export default function reducer(state, action) {
@@ -25,6 +26,20 @@ export default function reducer(state, action) {
         ...state,
         basket: newBasket,
       };
+
+    case "SET_USER":
+      var index1;
+      for (let i = 0; i < action.user.email.length; i++) {
+        if (action.user.email[i] === "@") index1 = i;
+      }
+
+      const parsedString = action.user.email.substring(0, index1);
+
+      return {
+        ...state,
+        user: parsedString,
+      };
+
     default:
       return state;
   }

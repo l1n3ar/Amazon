@@ -4,9 +4,19 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
+import { auth } from "../Firebase";
+import { signOut } from "firebase/auth";
 
 function Nav() {
-  const [{ basket }, __] = useStateValue();
+  const [{ basket, user }, __] = useStateValue();
+
+  function authentication() {
+    if (user !== null) {
+      signOut(auth).then((user) => {
+        console.log("The user with" + user.email + "is signed out");
+      });
+    }
+  }
 
   return (
     <div className="navbar">
@@ -24,8 +34,12 @@ function Nav() {
       <div className="navbar-items">
         <Link to="/login">
           <div className="navbar-item">
-            <span className="upper-line">Hello Guest</span>
-            <span className="lower-line">Sign in</span>
+            <span className="upper-line">
+              Hello {user === null ? "Guest" : user}
+            </span>
+            <span className="lower-line" onClick={authentication}>
+              {user === null ? "Sign in" : "Sign Out"}
+            </span>
           </div>
         </Link>
         <div className="navbar-item">
