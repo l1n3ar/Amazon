@@ -1,8 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "../Firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const history = useHistory();
+
+  function signIn(e) {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredentials) => {
+        // console.log(userCredentials);
+        history.push("/");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }
+
+  function register(e) {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredentials) => {
+        // console.log(userCredentials);
+        if (userCredentials) {
+          history.push("/");
+        }
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }
+
   return (
     <div className="login">
       <Link to="/">
@@ -20,14 +56,20 @@ function Login() {
             type="text"
             className="username"
             placeholder="Enter your E-mail ID"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <h5>Password</h5>
           <input
             type="password"
             className="password"
             placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="login-button">Sign In</button>
+          <button className="login-button" type="submit" onClick={signIn}>
+            Sign In
+          </button>
         </form>
 
         <p>
@@ -35,7 +77,9 @@ function Login() {
           Please see our Privacy Notice, our Cookies Notice and our
           Interest-Based Ads Notice.
         </p>
-        <button className="create-account">Create an Amazon Account</button>
+        <button className="create-account" onClick={register}>
+          Create an Amazon Account
+        </button>
       </div>
     </div>
   );

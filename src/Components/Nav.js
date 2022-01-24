@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 
 function Nav() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket }, __] = useStateValue();
 
   return (
     <div className="navbar">
