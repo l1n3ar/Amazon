@@ -5,7 +5,7 @@ import { useStateValue } from "../StateProvider";
 import { useHistory } from "react-router-dom";
 
 function Subtotal() {
-  const [{ basket }, _] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
   var total = 0;
   for (let i = 0; i < basket.length; i++) {
     total += basket[i].price;

@@ -9,6 +9,7 @@ import Login from "./Components/Login";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Firebase";
 import { useStateValue } from "./StateProvider";
+import Payment from "./Components/Payment";
 
 function App() {
   const [state, dispatch] = useStateValue();
@@ -43,7 +44,7 @@ function App() {
           </Route>
           <Route exact path="/payment">
             <Nav />
-            <h1>I am payment</h1>
+            <Payment />
           </Route>
           <Route exact path="/">
             <Nav />
